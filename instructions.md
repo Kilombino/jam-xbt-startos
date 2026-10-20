@@ -24,6 +24,10 @@ CoinJoin on Bitcoin BLAKE2b (XBT) with the Jam wallet. *Español abajo.*
   **fidelity bond**, or nobody takes your offer: *Earn → Create fidelity bond*. A bond **locks the
   coins in it until the date you choose**; they cannot be moved before. Keep Jam running while
   Earn is on. Bonds from a hardware wallet or cold storage are not supported for now.
+- **Settings → View in Kilowallet (read-only)** shows a QR code: scan it with Kilowallet to follow
+  this wallet from your phone (jars, bonds, an alert when a bond unlocks). It holds no private key,
+  but it shows every address and balance: share it only with your own phone. After creating a new
+  bond, scan it again.
 - Jam refuses to start on a node that is not on the BLAKE2b chain. It only talks to XBT JoinMarket.
 - Use a new set of words made in Jam, never one from the SHA-256 chain, and small amounts while
   the market is young.
@@ -41,6 +45,11 @@ CoinJoin on Bitcoin BLAKE2b (XBT) with the Jam wallet. *Español abajo.*
 5. **Ganar** ofrece tus monedas a otros y necesita un **bono de fidelidad** (si no, nadie acepta tu
    oferta): *Ganar → Crear bono de fidelidad*. El bono **bloquea las monedas hasta la fecha que
    elijas**; antes no se pueden mover. Bonos desde cartera hardware: por ahora no.
+
+6. **Ajustes → Ver en Kilowallet (solo lectura)** muestra un QR: escanéalo con Kilowallet para
+   seguir esta cartera desde el móvil (botes, bonds y aviso cuando un bond se desbloquea). No
+   lleva ninguna clave privada, pero enseña todas las direcciones y saldos: compártelo solo con tu
+   propio móvil. Si creas un bond nuevo, vuelve a escanearlo.
 
 Jam no arranca con un nodo que no sea de la cadena BLAKE2b. Usa palabras nuevas creadas en Jam y
 cantidades pequeñas mientras el mercado es joven.
