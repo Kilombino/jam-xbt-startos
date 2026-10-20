@@ -119,8 +119,8 @@ The whole `main` volume. The wallets in it are encrypted with the user's Jam pas
 - Talks only to XBT JoinMarket peers; cannot talk to JoinMarket on the SHA-256 chain.
 - Every signature uses sighash 0x21 (unified): nothing is replayable on the SHA-256 chain.
 - Settings → View in Kilowallet: Jam reads jmwalletd's read-only
-  `GET /api/v1/wallet/{name}/watch-export` (the five jar xpubs + bond timenumbers/locktimes, no
-  private key) and shows it as a QR for Kilowallet's watch-only JoinMarket wallet.
+  `GET /api/v1/wallet/{name}/watch-export` (the five jar xpubs + bond timenumbers/locktimes + the master key
+  fingerprint, no private key) and shows it as a QR for Kilowallet's watch-only JoinMarket wallet.
 - Jam caches jmwalletd's settings in the browser session: lock and unlock after a change.
 - If the node restarts with a new cookie, Jam reconnects only after the service restarts.
 - Takers use only makers with a fidelity bond; earning needs one (created from Jam, it locks the
