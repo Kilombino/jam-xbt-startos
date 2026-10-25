@@ -9,7 +9,7 @@
 > the upstream documentation is accurate and fully applicable — see the
 > Documentation section of `instructions.md` for links.
 
-JoinMarket-NG built for Bitcoin BLAKE2b (XBT) —
+JoinMarket-NG built for Bitcoin BLAKE2b (BTC) —
 [Kilombino/joinmarket-ng](https://github.com/Kilombino/joinmarket-ng), branch `xbt` — with
 the Jam web wallet ([Kilombino/jam](https://github.com/Kilombino/jam), branch `xbt`): CoinJoin
 as a taker or a maker, against a BLAKE2b node.
@@ -63,7 +63,7 @@ One volume, `main`, mounted at `/data`. The node's `main` volume is mounted read
 
 `startos-store.json` (`node`: `auto`, `knots-blake2b` or `bitcoind`), written by the action.
 The application's `config.toml` is not managed: every setting comes from the image's
-environment (XBT directory, `require_verified` nick authentication, Tor ports) plus
+environment (BLAKE2b JoinMarket directory, `require_verified` nick authentication, Tor ports) plus
 `BITCOIN_RPC_URL`, `BITCOIN_RPC_COOKIE` and `JMWALLETD_NO_TLS=true` set by `main.ts`.
 Environment variables win over a hand-edited `/data/config.toml`. The image makes takers use only
 makers with a fidelity bond (`TAKER__BONDLESS_MAKERS_ALLOWANCE=0`, no fallback to bondless ones:
@@ -82,7 +82,7 @@ port 8332). Both are optional dependencies; the one in use is the chosen one, or
 One interface, `ui` (type `ui`), port 28183, plain HTTP: jmwalletd's API, websocket
 (`/jmws`) and the Jam UI. StartOS terminates TLS. Inside the container Tor (SOCKS 28185,
 control 28186), the orderbook watcher (28184) and the maker's onion listener listen on
-127.0.0.1 only. Outbound: Tor to the XBT directory
+127.0.0.1 only. Outbound: Tor to the BLAKE2b JoinMarket directory
 `f3tfzgk5ilwfapx427yx5ckeh7ptuvskfxnfnicfo747jyq5mgzdtvad.onion:5222` and to peers' onions;
 the maker publishes an ephemeral onion through its own Tor while *Earn* is on.
 
@@ -116,7 +116,7 @@ The whole `main` volume. The wallets in it are encrypted with the user's Jam pas
 
 ## Limitations and Differences
 
-- Talks only to XBT JoinMarket peers; cannot talk to JoinMarket on the SHA-256 chain.
+- Talks only to JoinMarket peers on the BLAKE2b chain; cannot talk to JoinMarket on the SHA-256 chain.
 - Every signature uses sighash 0x21 (unified): nothing is replayable on the SHA-256 chain.
 - Settings → View in Kilowallet: Jam reads jmwalletd's read-only
   `GET /api/v1/wallet/{name}/watch-export` (the five jar xpubs + bond timenumbers/locktimes + the master key

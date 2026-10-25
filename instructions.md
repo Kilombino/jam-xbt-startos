@@ -1,11 +1,11 @@
 # JoinMarket XBT (Jam)
 
-CoinJoin on Bitcoin BLAKE2b (XBT) with the Jam wallet. *Español abajo.*
+CoinJoin on Bitcoin BLAKE2b (BTC) with the Jam wallet. *Español abajo.*
 
 ## Documentation
 
 - Tutorial (Spanish): <https://github.com/Kilombino/joinmarket-ng/blob/xbt/TUTORIAL-LINUX-ES.md>
-- XBT notes: <https://github.com/Kilombino/joinmarket-ng/blob/xbt/XBT.md>
+- Notes for the BLAKE2b chain: <https://github.com/Kilombino/joinmarket-ng/blob/xbt/XBT.md>
 
 ## Getting set up
 
@@ -28,7 +28,7 @@ CoinJoin on Bitcoin BLAKE2b (XBT) with the Jam wallet. *Español abajo.*
   this wallet from your phone (jars, bonds, an alert when a bond unlocks). It holds no private key,
   but it shows every address and balance: share it only with your own phone. After creating a new
   bond, scan it again.
-- Jam refuses to start on a node that is not on the BLAKE2b chain. It only talks to XBT JoinMarket.
+- Jam refuses to start on a node that is not on the BLAKE2b chain. It only talks to JoinMarket on the BLAKE2b chain.
 - Use a new set of words made in Jam, never one from the SHA-256 chain, and small amounts while
   the market is young.
 
