@@ -1,4 +1,4 @@
-# JoinMarket XBT (Jam)
+# JoinBlaket
 
 CoinJoin on Bitcoin BLAKE2b (BTC) with the Jam wallet. *Español abajo.*
 
@@ -34,7 +34,7 @@ CoinJoin on Bitcoin BLAKE2b (BTC) with the Jam wallet. *Español abajo.*
 
 ---
 
-# JoinMarket XBT (Jam) — español
+# JoinBlaket — español
 
 1. Instala un nodo BLAKE2b: **Bitcoin Knots (BLAKE2b) Companion** o **Bitcoin** en la cadena
    BLAKE2b. Si tienes los dos, la acción *Elegir nodo BLAKE2b* escoge uno.

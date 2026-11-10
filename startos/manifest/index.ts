@@ -3,7 +3,7 @@ import { long, short } from './i18n'
 
 export const manifest = setupManifest({
   id: 'jam-xbt',
-  title: 'JoinMarket XBT (Jam)',
+  title: 'JoinBlaket',
   license: 'MIT',
   packageRepo: 'https://github.com/Kilombino/jam-xbt-startos',
   upstreamRepo: 'https://github.com/Kilombino/joinblaket',

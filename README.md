@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="icon.png" alt="JoinMarket XBT (Jam) Logo" width="21%">
+  <img src="icon.png" alt="JoinBlaket Logo" width="21%">
 </p>
 
-# JoinMarket XBT (Jam) on StartOS
+# JoinBlaket on StartOS
 
 > Everything not listed in this document should behave the same as upstream
-> JoinMarket-NG XBT and Jam. If a feature, setting, or behavior is not mentioned here,
+> JoinBlaket (JoinMarket-NG for Bitcoin BLAKE2b) and Jam. If a feature, setting, or behavior is not mentioned here,
 > the upstream documentation is accurate and fully applicable — see the
 > Documentation section of `instructions.md` for links.
 

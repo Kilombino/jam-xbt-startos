@@ -1,14 +1,14 @@
 export const short = {
   en_US:
-    'CoinJoin on Bitcoin BLAKE2b (XBT): JoinMarket with the Jam web wallet',
-  es_ES: 'CoinJoin en Bitcoin BLAKE2b (XBT): JoinMarket con la cartera web Jam',
+    'JoinBlaket: CoinJoin on Bitcoin (BLAKE2b) with the Jam web wallet',
+  es_ES: 'JoinBlaket: CoinJoin en Bitcoin (BLAKE2b) con la cartera web Jam',
 }
 
 export const long = {
   en_US:
-    "JoinMarket-NG built for the Bitcoin BLAKE2b chain (XBT), with the Jam web wallet. Mix your coins with other people's in CoinJoins (as a taker), only with makers that hold a fidelity bond, or offer them to others and earn (as a maker, with a fidelity bond of your own); coins never leave your wallet. Reads the chain from your own BLAKE2b node and refuses any other. Talks to the XBT JoinMarket directory over its own Tor, with verified nick authentication. Every signature uses the unified sighash (0x21), so nothing can be replayed on the SHA-256 chain. It cannot talk to JoinMarket on the SHA-256 chain. Nothing to configure.",
+    "JoinBlaket is JoinMarket-NG built for the Bitcoin (BLAKE2b) chain, with the Jam web wallet. Mix your coins with other people's in CoinJoins (as a taker), only with makers that hold a fidelity bond, or offer them to others and earn (as a maker, with a fidelity bond of your own); coins never leave your wallet. Reads the chain from your own BLAKE2b node and refuses any other. Talks to the JoinBlaket directory over its own Tor, with verified nick authentication. Every signature uses the unified sighash (0x21), so nothing can be replayed on the SHA-256 chain. It cannot talk to JoinMarket on the SHA-256 chain. Nothing to configure.",
   es_ES:
-    'JoinMarket-NG hecho para la cadena Bitcoin BLAKE2b (XBT), con la cartera web Jam. Mezcla tus monedas con las de otros en CoinJoins (como taker), solo con makers que tienen bono de fidelidad, u ofrécelas a otros y gana (como maker, con tu propio bono de fidelidad); las monedas nunca salen de tu cartera. Lee la cadena de tu propio nodo BLAKE2b y se niega con cualquier otro. Habla con el directorio JoinMarket XBT por su propio Tor, con autenticación de nick verificada. Todas las firmas usan el sighash unificado (0x21): nada se puede repetir en la cadena SHA-256. No habla con JoinMarket de la cadena SHA-256. Nada que configurar.',
+    'JoinBlaket es JoinMarket-NG hecho para la cadena Bitcoin (BLAKE2b), con la cartera web Jam. Mezcla tus monedas con las de otros en CoinJoins (como taker), solo con makers que tienen bono de fidelidad, u ofrécelas a otros y gana (como maker, con tu propio bono de fidelidad); las monedas nunca salen de tu cartera. Lee la cadena de tu propio nodo BLAKE2b y se niega con cualquier otro. Habla con el directorio de JoinBlaket por su propio Tor, con autenticación de nick verificada. Todas las firmas usan el sighash unificado (0x21): nada se puede repetir en la cadena SHA-256. No habla con JoinMarket de la cadena SHA-256. Nada que configurar.',
 }
 
 export const nodeDescription = {
