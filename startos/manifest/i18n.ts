@@ -1,6 +1,5 @@
 export const short = {
-  en_US:
-    'JoinBlaket: CoinJoin on Bitcoin (BLAKE2b) with the Jam web wallet',
+  en_US: 'JoinBlaket: CoinJoin on Bitcoin (BLAKE2b) with the Jam web wallet',
   es_ES: 'JoinBlaket: CoinJoin en Bitcoin (BLAKE2b) con la cartera web Jam',
 }
 
