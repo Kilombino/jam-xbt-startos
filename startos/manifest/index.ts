@@ -6,16 +6,16 @@ export const manifest = setupManifest({
   title: 'JoinMarket XBT (Jam)',
   license: 'MIT',
   packageRepo: 'https://github.com/Kilombino/jam-xbt-startos',
-  upstreamRepo: 'https://github.com/Kilombino/joinmarket-ng',
-  marketingUrl: 'https://github.com/Kilombino/joinmarket-ng/blob/xbt/XBT.md',
+  upstreamRepo: 'https://github.com/Kilombino/joinblaket',
+  marketingUrl: 'https://github.com/Kilombino/joinblaket/blob/xbt/XBT.md',
   donationUrl: null,
   description: { short, long },
   volumes: ['main'],
   images: {
-    // Built reproducibly from Kilombino/joinmarket-ng (branch xbt, xbt-docker/build.sh)
+    // Built reproducibly from Kilombino/joinblaket (branch xbt, xbt-docker/build.sh)
     // with the Jam fork Kilombino/jam (branch xbt). See UPDATING.md.
     jam: {
-      source: { dockerTag: 'ghcr.io/kilombino/jam-xbt:0.41.0-xbt3' },
+      source: { dockerTag: 'ghcr.io/kilombino/jam-xbt:0.43.0-xbt1' },
       arch: ['x86_64', 'aarch64'],
     },
   },

@@ -10,7 +10,7 @@
 > Documentation section of `instructions.md` for links.
 
 JoinMarket-NG built for Bitcoin BLAKE2b (BTC) —
-[Kilombino/joinmarket-ng](https://github.com/Kilombino/joinmarket-ng), branch `xbt` — with
+[Kilombino/joinblaket](https://github.com/Kilombino/joinblaket), branch `xbt` — with
 the Jam web wallet ([Kilombino/jam](https://github.com/Kilombino/jam), branch `xbt`): CoinJoin
 as a taker or a maker, against a BLAKE2b node.
 
@@ -36,7 +36,7 @@ as a taker or a maker, against a BLAKE2b node.
 ## Image and Container Runtime
 
 One image, `ghcr.io/kilombino/jam-xbt` (x86_64 and aarch64), built reproducibly by
-`xbt-docker/build.sh` in the joinmarket-ng repo. It runs as uid 1000 and refuses root. Its
+`xbt-docker/build.sh` in the joinblaket repo. It runs as uid 1000 and refuses root. Its
 entrypoint (`tini -g -- jm-xbt-entrypoint`, PID 1 here) starts Tor, checks the node
 (`preflight.py`), then the orderbook watcher and `jmwalletd`, which serves the Jam UI and
 launches the taker, maker and tumbler when Jam asks. If one process exits the container

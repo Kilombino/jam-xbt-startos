@@ -1,6 +1,6 @@
 # Updating the upstream version
 
-Upstream is the image `ghcr.io/kilombino/jam-xbt`, built from Kilombino/joinmarket-ng (branch
+Upstream is the image `ghcr.io/kilombino/jam-xbt`, built from Kilombino/joinblaket (branch
 `xbt`) and Kilombino/jam (branch `xbt`) by `xbt-docker/build.sh`, which is reproducible.
 
 ## Determining the upstream version

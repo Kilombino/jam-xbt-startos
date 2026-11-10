@@ -4,8 +4,8 @@ CoinJoin on Bitcoin BLAKE2b (BTC) with the Jam wallet. *Español abajo.*
 
 ## Documentation
 
-- Tutorial (Spanish): <https://github.com/Kilombino/joinmarket-ng/blob/xbt/TUTORIAL-LINUX-ES.md>
-- Notes for the BLAKE2b chain: <https://github.com/Kilombino/joinmarket-ng/blob/xbt/XBT.md>
+- Tutorial (Spanish): <https://github.com/Kilombino/joinblaket/blob/xbt/TUTORIAL-LINUX-ES.md>
+- Notes for the BLAKE2b chain: <https://github.com/Kilombino/joinblaket/blob/xbt/XBT.md>
 
 ## Getting set up
 

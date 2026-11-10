@@ -1,13 +1,13 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
-// 0.41.0 = JoinMarket-NG 0.41.0, XBT build xbt3 (image tag 0.41.0-xbt3). See UPDATING.md.
+// 0.43.0 = JoinMarket-NG 0.43.0, XBT build xbt1 (image tag 0.43.0-xbt1). See UPDATING.md.
 export const current = VersionInfo.of({
-  version: '0.41.0:3',
+  version: '0.43.0:0',
   releaseNotes: {
     en_US:
-      'View in Kilowallet now also carries the wallet’s master key fingerprint, so a hardware signer such as SeedSigner can recognise its keys when you spend a fidelity bond from Kilowallet. Scan it again in Kilowallet to add it. JoinMarket-NG 0.41.0, Jam v2.0.0-beta.4, XBT build xbt3.',
+      'JoinBlaket 0.43.0-xbt1: based on JoinMarket-NG 0.43.0, with its denial-of-service and wallet daemon fixes. The BLAKE2b protections stay the same (unified sighash 0x21, "xbt" network, only makers with a fidelity bond, fees from your own node). Security fix: the wallet daemon used by Jam now also refuses the Neutrino backend. Your wallets are kept. Jam v2.0.0-beta.4-xbt3.',
     es_ES:
-      'Ver en Kilowallet ahora lleva también la huella de la clave maestra de la cartera, para que un firmador como SeedSigner reconozca sus claves cuando gastes un fidelity bond desde Kilowallet. Vuelve a escanearlo en Kilowallet para añadirla. JoinMarket-NG 0.41.0, Jam v2.0.0-beta.4, compilación XBT xbt3.',
+      'JoinBlaket 0.43.0-xbt1: basado en JoinMarket-NG 0.43.0, con sus arreglos contra denegación de servicio y del daemon del monedero. Las protecciones de BLAKE2b no cambian (sighash unificado 0x21, red "xbt", solo makers con bono de fidelidad, comisiones de tu propio nodo). Arreglo de seguridad: el daemon que usa Jam ahora también rechaza el backend Neutrino. Tus carteras se conservan. Jam v2.0.0-beta.4-xbt3.',
   },
   migrations: {
     up: async ({ effects }) => {},
