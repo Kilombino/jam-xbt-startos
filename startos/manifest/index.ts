@@ -15,7 +15,7 @@ export const manifest = setupManifest({
     // Built reproducibly from Kilombino/joinblaket (branch xbt, xbt-docker/build.sh)
     // with the Jam fork Kilombino/jam (branch xbt). See UPDATING.md.
     jam: {
-      source: { dockerTag: 'ghcr.io/kilombino/jam-xbt:0.43.0-xbt3' },
+      source: { dockerTag: 'ghcr.io/kilombino/jam-xbt:0.43.0-xbt4' },
       arch: ['x86_64', 'aarch64'],
     },
   },
