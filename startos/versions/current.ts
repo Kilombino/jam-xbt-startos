@@ -1,13 +1,13 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
-// 0.43.0 = JoinMarket-NG 0.43.0, XBT build xbt2 (image tag 0.43.0-xbt2). See UPDATING.md.
+// 0.43.0 = JoinMarket-NG 0.43.0, XBT build xbt3 (image tag 0.43.0-xbt3). See UPDATING.md.
 export const current = VersionInfo.of({
-  version: '0.43.0:2',
+  version: '0.43.0:3',
   releaseNotes: {
     en_US:
-      'JoinBlaket 0.43.0-xbt2. Telegram notices for makers, set from Jam: Settings › Telegram notices (bot token and chat id, a test button, turn off). The token stays on your server and is never shown again. A CoinJoin now needs at least 1 maker by default (it was 4), and if there are fewer makers than you ask for it goes on with those there are, so the first CoinJoins can happen while the market is small; with a single maker, that maker can link your input to your output. Makers still need a fidelity bond. Your wallets are kept. Jam v2.0.0-beta.4-xbt4.',
+      'JoinBlaket 0.43.0-xbt3. A fidelity bond can now be funded with any coin that is not frozen, not only CoinJoin outputs (there are no CoinJoins yet without makers); Jam warns that such a coin can be traced to its origin. Settings › Community now opens the BIP110 Telegram group and the JoinBlaket Discord. Telegram notices: the field now says "Your Telegram id" and refuses the bot\'s own number, a common mistake. From 0.43.0-xbt2: Telegram notices for makers set from Jam; a CoinJoin needs at least 1 maker and goes on with fewer makers than asked; makers still need a fidelity bond. Your wallets are kept. Jam v2.0.0-beta.4-xbt5.',
     es_ES:
-      'JoinBlaket 0.43.0-xbt2. Avisos por Telegram para makers, desde Jam: Ajustes › Avisos por Telegram (token del bot e id del chat, botón de prueba, apagar). El token se queda en tu servidor y no se vuelve a mostrar. Un coinjoin necesita ahora como mínimo 1 maker por defecto (antes 4), y si hay menos makers de los que pides sigue con los que haya, para que haya coinjoins aunque el mercado sea pequeño; con un solo maker, ese maker puede relacionar tu entrada con tu salida. Los makers siguen necesitando bono de fidelidad. Tus carteras se conservan. Jam v2.0.0-beta.4-xbt4.',
+      'JoinBlaket 0.43.0-xbt3. La fianza (bono de fidelidad) se puede pagar ahora con cualquier moneda no congelada, no solo con salidas de coinjoin (sin makers aún no hay coinjoins); Jam avisa de que esa moneda se puede rastrear hasta su origen. Ajustes › Comunidad abre ahora el grupo de Telegram BIP110 y el Discord de JoinBlaket. Avisos por Telegram: el campo dice "Tu id de Telegram" y rechaza el número del propio bot, una confusión habitual. De la 0.43.0-xbt2: avisos por Telegram para makers desde Jam; un coinjoin necesita como mínimo 1 maker y sigue con menos makers de los pedidos; los makers siguen necesitando bono de fidelidad. Tus carteras se conservan. Jam v2.0.0-beta.4-xbt5.',
   },
   migrations: {
     up: async ({ effects }) => {},
