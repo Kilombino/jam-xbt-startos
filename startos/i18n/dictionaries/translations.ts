@@ -17,5 +17,8 @@ export default {
     12: 'De qué nodo instalado lee Jam la cadena',
     13: 'Interfaz web',
     14: 'Jam, la cartera de JoinMarket',
+    15: 'Filtro RPC',
+    16: 'El nodo responde a través del filtro RPC',
+    17: 'El filtro RPC o el nodo no responden',
   },
 } satisfies Record<string, LangDict>

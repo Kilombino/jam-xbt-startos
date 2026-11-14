@@ -36,19 +36,27 @@ as a taker or a maker, against a BLAKE2b node.
 ## Image and Container Runtime
 
 One image, `ghcr.io/kilombino/jam-xbt` (x86_64 and aarch64), built reproducibly by
-`xbt-docker/build.sh` in the joinblaket repo. It runs as uid 1000 and refuses root. Its
-entrypoint (`tini -g -- jm-xbt-entrypoint`, PID 1 here) starts Tor, checks the node
+`xbt-docker/build.sh` in the joinblaket repo. Its entrypoint (`tini -g -- jm-xbt-entrypoint`,
+PID 1 here) drops to uid 1000 (it never runs JoinBlaket as root), starts Tor, checks the node
 (`preflight.py`), then the orderbook watcher and `jmwalletd`, which serves the Jam UI and
 launches the taker, maker and tumbler when Jam asks. If one process exits the container
-exits and StartOS restarts it. One subcontainer, `jam`, runs two oneshots before the daemon:
-`cookie` (as root: `chown` of `/data` to 1000 and a copy of the node's `.cookie` to
-`/data/.rpc-cookie`, mode 0400) and `chain` (the preflight: waits for the node, then exits 2
-unless it is BLAKE2b and on mainnet).
+exits and StartOS restarts it. Two subcontainers of the same image:
+
+- `rpc-filter`: daemon `rpc-filter`, JoinBlaket's RPC filter (`rpc_filter.py`, listening on
+  127.0.0.1:28187). The only subcontainer that mounts the node's volume (read-only, for the
+  `.cookie`, read again when the node writes a new one). It passes on to the node only the 26
+  RPCs JoinBlaket uses, and only on its own wallets (`jm_<8 hex>_mainnet`); everything else gets
+  "method not allowed" (list and how it was derived: joinblaket's XBT.md, "RPC filter").
+- `jam`: oneshots `perms` (as root: `chown` of `/data` to 1000 and removal of the
+  `/data/.rpc-cookie` copy older versions kept) and `chain` (the preflight through the filter:
+  waits for the node, then exits 2 unless it is BLAKE2b and on mainnet), then the daemon `jam`
+  with `JM_XBT_RPC_FILTER=external` and only the filter's URL and credentials (random, new on
+  every start). It has no access to the node's cookie.
 
 ## Volume and Data Layout
 
-One volume, `main`, mounted at `/data`. The node's `main` volume is mounted read-only at
-`/mnt/node` for its `.cookie`.
+One volume, `main`, mounted at `/data` in `jam`. The node's `main` volume is mounted read-only
+at `/mnt/node` in `rpc-filter` only, for its `.cookie`.
 
 | Path | What |
 |---|---|
@@ -56,7 +64,6 @@ One volume, `main`, mounted at `/data`. The node's `main` volume is mounted read
 | `cmtdata/` | PoDLE commitments used and blacklisted |
 | `wallet_metadata_*.jsonl`, `history.csv`, `state/` | labels, CoinJoin history, state |
 | `tor/`, `ssl/`, `obwatcher/` | Tor state, an unused certificate, the watcher's data |
-| `.rpc-cookie` | copy of the node's cookie, rewritten on every start |
 | `startos-store.json` | the node choice (action *Choose BLAKE2b node*) |
 
 ## File Models
@@ -64,10 +71,11 @@ One volume, `main`, mounted at `/data`. The node's `main` volume is mounted read
 `startos-store.json` (`node`: `auto`, `knots-blake2b` or `bitcoind`), written by the action.
 The application's `config.toml` is not managed: every setting comes from the image's
 environment (BLAKE2b JoinMarket directory, `require_verified` nick authentication, Tor ports) plus
-`BITCOIN_RPC_URL`, `BITCOIN_RPC_COOKIE` and `JMWALLETD_NO_TLS=true` set by `main.ts`.
+`BITCOIN_RPC_URL`/`USER`/`PASS` (the filter's), `JM_XBT_RPC_FILTER=external` and
+`JMWALLETD_NO_TLS=true` set by `main.ts`.
 Environment variables win over a hand-edited `/data/config.toml`. The image makes takers use only
 makers with a fidelity bond (`TAKER__BONDLESS_MAKERS_ALLOWANCE=0`, no fallback to bondless ones:
-the CoinJoin fails with "Not enough makers with a fidelity bond"), `TAKER__MINIMUM_MAKERS=4`.
+the CoinJoin fails with "Not enough makers with a fidelity bond"), `TAKER__MINIMUM_MAKERS=1`.
 
 ## Dependencies
 
@@ -75,7 +83,8 @@ One BLAKE2b node, running, with its wallet feature on (jmwalletd creates a watch
 wallet `jm_<fingerprint>_mainnet` in it): `knots-blake2b` (Bitcoin Knots (BLAKE2b)
 Companion, `>=1.0.0:30`, RPC port 18443) or `bitcoind` (Bitcoin on the BLAKE2b chain, RPC
 port 8332). Both are optional dependencies; the one in use is the chosen one, or with
-`auto` the companion if installed, else `bitcoind`. Authentication is the node's cookie.
+`auto` the companion if installed, else `bitcoind`. Authentication is the node's cookie, read
+by the RPC filter only.
 
 ## Network Access and Interfaces
 
@@ -104,6 +113,9 @@ None.
 ## Health Checks
 
 - `jam` (*Web Interface*): port 28183 listening.
+- `rpc-filter` (*RPC filter*): one `getblockchaininfo` through the filter (`rpc_filter.py
+  --check`); fails when the filter or the node does not answer. Jam then shows the node as
+  unreachable.
 - `node-rpc` (*BLAKE2b node*), only while the chosen node publishes no RPC: says whether it is
   missing, too old or stopped.
 - The `chain` oneshot fails (exit 2, "REFUSING TO START" in the logs) on a node that is not
@@ -122,7 +134,6 @@ The whole `main` volume. The wallets in it are encrypted with the user's Jam pas
   `GET /api/v1/wallet/{name}/watch-export` (the five jar xpubs + bond timenumbers/locktimes + the master key
   fingerprint, no private key) and shows it as a QR for Kilowallet's watch-only JoinMarket wallet.
 - Jam caches jmwalletd's settings in the browser session: lock and unlock after a change.
-- If the node restarts with a new cookie, Jam reconnects only after the service restarts.
 - Takers use only makers with a fidelity bond; earning needs one (created from Jam, it locks the
   coins until the chosen date). Cold-storage / hardware-wallet bonds are not supported.
 

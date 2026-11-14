@@ -11,6 +11,9 @@ const dict = {
   'The web interface is not ready': 6,
   'Update the BLAKE2b node: Jam needs 1.0.0:30 or later, installed is': 7,
   'The BLAKE2b node is stopped': 8,
+  'RPC filter': 15,
+  'The node answers through the RPC filter': 16,
+  'The RPC filter or the node does not answer': 17,
 
   // actions/chooseNode.ts
   'Automatic uses Bitcoin Knots (BLAKE2b) Companion if it is installed, otherwise Bitcoin (bitcoind). Jam checks that the node follows the BLAKE2b chain before using it.': 9,

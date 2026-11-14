@@ -4,11 +4,15 @@ import { storeJson } from './fileModels/store.json'
 /** jmwalletd: the API and the Jam web UI on one port (plain HTTP; StartOS adds TLS). */
 export const uiPort = 28183
 
-/** Where the node's volume is mounted, read-only, to read its RPC cookie. */
+/** Where the node's volume is mounted, read-only, in the RPC filter's container only. */
 export const nodeMount = '/mnt/node'
 
-/** The cookie copied for uid 1000 (the image refuses to run as root). */
-export const cookieCopy = '/data/.rpc-cookie'
+/** Up to 0.43.0:5 a copy of the node's cookie for Jam lived here; removed at start. */
+export const oldCookieCopy = '/data/.rpc-cookie'
+
+/** JoinBlaket's RPC filter (rpc_filter.py in the image), on the package's localhost. */
+export const filterPort = 28187
+export const filterUser = 'jmrpcfilter'
 
 export type NodeId = 'knots-blake2b' | 'bitcoind'
 
