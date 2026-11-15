@@ -1,13 +1,13 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
-// 0.43.0 = JoinMarket-NG 0.43.0, XBT build xbt6 (image tag 0.43.0-xbt6). See UPDATING.md.
+// 0.43.0 = JoinMarket-NG 0.43.0, XBT build xbt7 (image tag 0.43.0-xbt7). See UPDATING.md.
 export const current = VersionInfo.of({
-  version: '0.43.0:6',
+  version: '0.43.0:7',
   releaseNotes: {
     en_US:
-      "JoinBlaket 0.43.0-xbt6. Jam no longer has the node's RPC access: a small RPC filter, in its own container and the only one that can read the node's cookie, passes on just the 26 calls JoinBlaket uses, and only on JoinBlaket's own wallets. Jam and everything that talks to the network get the filter's credentials, new on every start; the copy of the node's cookie that older versions kept in Jam's data is deleted. New health check: RPC filter. If the filter is down, Jam shows the node as unreachable. From 0.43.0-xbt5: a CoinJoin with only 1 maker works. Your wallets are kept. Jam v2.0.0-beta.4-xbt6.",
+      'JoinBlaket 0.43.0-xbt7. When a collaborative send (CoinJoin) fails, Jam now says why on screen, in your language, instead of only "the collaborative flow has stopped". The send form shows the most one CoinJoin can send from the chosen jar: jar 0 does not combine coins that did not come from a CoinJoin (for your privacy), so one CoinJoin can spend at most your largest single coin, minus fees. Larger amounts are blocked with the way out (send less, or consolidate first by sending the coins to yourself without CoinJoin). The "wait for 5 confirmations" advice now appears only when waiting actually helps. From 0.43.0-xbt6: RPC filter, Jam has no direct access to the node. Your wallets are kept. Jam v2.0.0-beta.4-xbt7.',
     es_ES:
-      'JoinBlaket 0.43.0-xbt6. Jam ya no tiene acceso RPC al nodo: un pequeño filtro RPC, en su propio contenedor y el único que puede leer la cookie del nodo, deja pasar solo las 26 llamadas que JoinBlaket usa, y solo sobre sus propias carteras. Jam y todo lo que habla con la red reciben las credenciales del filtro, nuevas en cada arranque; se borra la copia de la cookie del nodo que las versiones anteriores guardaban en los datos de Jam. Nueva comprobación de salud: Filtro RPC. Si el filtro está caído, Jam muestra el nodo como inalcanzable. De la 0.43.0-xbt5: funciona un coinjoin con un solo maker. Tus carteras se conservan. Jam v2.0.0-beta.4-xbt6.',
+      'JoinBlaket 0.43.0-xbt7. Cuando un envío colaborativo (CoinJoin) falla, Jam ahora dice por qué en pantalla y en tu idioma, en vez de solo «el proceso colaborativo se ha detenido». El formulario de envío muestra lo máximo que un CoinJoin puede enviar desde el bote elegido: el bote 0 no junta monedas que no vienen de un CoinJoin (por tu privacidad), así que un CoinJoin puede gastar como mucho tu moneda más grande, menos comisiones. Los importes mayores se bloquean indicando la salida (enviar menos, o juntar antes las monedas enviándotelas a ti mismo sin CoinJoin). El consejo de «esperar 5 confirmaciones» solo aparece cuando esperar sirve de algo. De la 0.43.0-xbt6: filtro RPC, Jam no tiene acceso directo al nodo. Tus carteras se conservan. Jam v2.0.0-beta.4-xbt7.',
   },
   migrations: {
     up: async ({ effects }) => {},
