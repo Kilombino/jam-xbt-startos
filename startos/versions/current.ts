@@ -1,13 +1,13 @@
 import { IMPOSSIBLE, VersionInfo } from '@start9labs/start-sdk'
 
-// 0.43.0 = JoinMarket-NG 0.43.0, XBT build xbt7 (image tag 0.43.0-xbt7). See UPDATING.md.
+// 0.43.0 = JoinMarket-NG 0.43.0, XBT build xbt8 (image tag 0.43.0-xbt8). See UPDATING.md.
 export const current = VersionInfo.of({
-  version: '0.43.0:7',
+  version: '0.43.0:8',
   releaseNotes: {
     en_US:
-      'JoinBlaket 0.43.0-xbt7. When a collaborative send (CoinJoin) fails, Jam now says why on screen, in your language, instead of only "the collaborative flow has stopped". The send form shows the most one CoinJoin can send from the chosen jar: jar 0 does not combine coins that did not come from a CoinJoin (for your privacy), so one CoinJoin can spend at most your largest single coin, minus fees. Larger amounts are blocked with the way out (send less, or consolidate first by sending the coins to yourself without CoinJoin). The "wait for 5 confirmations" advice now appears only when waiting actually helps. From 0.43.0-xbt6: RPC filter, Jam has no direct access to the node. Your wallets are kept. Jam v2.0.0-beta.4-xbt7.',
+      'JoinBlaket 0.43.0-xbt8. You can now create another fidelity bond while you already have one (Earn › Create Fidelity Bond), for example a bigger one or one locked until a later date, before the first expires. Bonds do not add up: your offer advertises only the one with the highest value, so a new bond only helps if it is worth more. The button works only with Earn stopped and no CoinJoin running; the wizard does not offer the month of a bond you already have, and existing bonds are never spent to create the new one. From 0.43.0-xbt7: Jam says why a CoinJoin failed and the most one CoinJoin can send from a jar. Your wallets are kept. Jam v2.0.0-beta.4-xbt8.',
     es_ES:
-      'JoinBlaket 0.43.0-xbt7. Cuando un envío colaborativo (CoinJoin) falla, Jam ahora dice por qué en pantalla y en tu idioma, en vez de solo «el proceso colaborativo se ha detenido». El formulario de envío muestra lo máximo que un CoinJoin puede enviar desde el bote elegido: el bote 0 no junta monedas que no vienen de un CoinJoin (por tu privacidad), así que un CoinJoin puede gastar como mucho tu moneda más grande, menos comisiones. Los importes mayores se bloquean indicando la salida (enviar menos, o juntar antes las monedas enviándotelas a ti mismo sin CoinJoin). El consejo de «esperar 5 confirmaciones» solo aparece cuando esperar sirve de algo. De la 0.43.0-xbt6: filtro RPC, Jam no tiene acceso directo al nodo. Tus carteras se conservan. Jam v2.0.0-beta.4-xbt7.',
+      'JoinBlaket 0.43.0-xbt8. Ya puedes crear otro bono de fidelidad aunque tengas uno (Ganar › Crear bono de fidelidad), por ejemplo uno mayor o con una fecha de vencimiento más lejana, antes de que venza el primero. Los bonos no se suman: tu oferta anuncia solo el de mayor valor, así que un bono nuevo solo te sirve si vale más. El botón solo funciona con Ganar parado y sin ningún CoinJoin en curso; el asistente no ofrece el mes de un bono que ya tengas y nunca gasta tus bonos actuales para crear el nuevo. De la 0.43.0-xbt7: Jam dice por qué falló un CoinJoin y lo máximo que un CoinJoin puede enviar desde un bote. Tus carteras se conservan. Jam v2.0.0-beta.4-xbt8.',
   },
   migrations: {
     up: async ({ effects }) => {},
