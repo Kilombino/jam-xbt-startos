@@ -70,7 +70,7 @@ at `/mnt/node` in `rpc-filter` only, for its `.cookie`.
 
 `startos-store.json` (`node`: `auto`, `knots-blake2b` or `bitcoind`), written by the action.
 The application's `config.toml` is not managed: every setting comes from the image's
-environment (BLAKE2b JoinMarket directory, `require_verified` nick authentication, Tor ports) plus
+environment (BLAKE2b JoinMarket directories, `require_verified` nick authentication, Tor ports) plus
 `BITCOIN_RPC_URL`/`USER`/`PASS` (the filter's), `JM_XBT_RPC_FILTER=external` and
 `JMWALLETD_NO_TLS=true` set by `main.ts`.
 Environment variables win over a hand-edited `/data/config.toml`. The image makes takers use only
@@ -91,8 +91,10 @@ by the RPC filter only.
 One interface, `ui` (type `ui`), port 28183, plain HTTP: jmwalletd's API, websocket
 (`/jmws`) and the Jam UI. StartOS terminates TLS. Inside the container Tor (SOCKS 28185,
 control 28186), the orderbook watcher (28184) and the maker's onion listener listen on
-127.0.0.1 only. Outbound: Tor to the BLAKE2b JoinMarket directory
-`f3tfzgk5ilwfapx427yx5ckeh7ptuvskfxnfnicfo747jyq5mgzdtvad.onion:5222` and to peers' onions;
+127.0.0.1 only. Outbound: Tor to the three BLAKE2b JoinMarket directories (from 0.43.0-xbt9:
+`f3tfzgk5ilwfapx427yx5ckeh7ptuvskfxnfnicfo747jyq5mgzdtvad.onion:5222`,
+`xgn4ctdotf6w5tnnqg6revvfyzgxkthbzy25zqxyowhv2cmtuqegwuyd.onion:5222` and
+`ftow7ou2tnxuiowxtva4elpuebzk2vq5cbvj4gqdnbzx6wy2x7awekid.onion:5222`) and to peers' onions;
 the maker publishes an ephemeral onion through its own Tor while *Earn* is on.
 
 ## Installation and First-Run Flow
